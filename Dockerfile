@@ -2,7 +2,7 @@ ARG BASE_IMAGE=nvcr.io/nvidia/pytorch:21.07-py3
 FROM $BASE_IMAGE
 ARG BASE_IMAGE
 
-COPY lib/csrc environment.yml CircleSnake
+COPY lib/csrc environment.yml CircleSnake/
 
 # COPY configs external lib tools environment.yaml CircleSnake
 
@@ -40,10 +40,10 @@ RUN pip install wandb tensorboard
 COPY configs configs 
 COPY external external 
 COPY lib lib
-COPY tools *.py .
+COPY tools *.py ./
 
 
-ENTRYPOINT gsutil cp gs://vslaykovsky/data.zip . && gsutil cp gs://vslaykovsky/annotations_circlenet.zip . && mkdir -p /root/.cache/torch/hub/checkpoints/ && gsutil cp gs://vslaykovsky/dla34-ba72cf86.pth /root/.cache/torch/hub/checkpoints/ \
+ENTRYPOINT gsutil -m cp gs://vslaykovsky/data.zip . && gsutil -m cp gs://vslaykovsky/annotations_circlenet.zip . && mkdir -p /root/.cache/torch/hub/checkpoints/ && gsutil -m cp gs://vslaykovsky/dla34-ba72cf86.pth /root/.cache/torch/hub/checkpoints/ && \
     mkdir -p data/stemInstance/annotations && \
     unzip data.zip -d data/stemInstance && \
     unzip annotations_circlenet.zip -d data/stemInstance/annotations && \
