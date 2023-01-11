@@ -23,14 +23,14 @@ class DatasetCatalog(object):
         },
         "CocoTrain": {
             "id": "coco",
-            "data_root": "data/kidpath_coco/train",
-            "ann_file": "data/kidpath_coco/train_circle.json",
+            "data_root": "data/stemInstance/train",
+            "ann_file": "data/stemInstance/annotations/train.json",
             "split": "train",
         },
         "CocoVal": {
             "id": "coco",
-            "data_root": "data/kidpath_coco/validate",
-            "ann_file": "data/kidpath_coco/validate_circle.json",
+            "data_root": "data/stemInstance/val",
+            "ann_file": "data/stemInstance/annotations/val.json",
             "split": "test",
         },
         "CocoMini": {

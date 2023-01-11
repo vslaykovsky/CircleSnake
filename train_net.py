@@ -7,9 +7,13 @@ from lib.networks import make_network
 from lib.train import (make_lr_scheduler, make_optimizer, make_recorder,
                        make_trainer, set_lr_scheduler)
 from lib.utils.net_utils import load_model, load_network, save_model
+import wandb
+import os
 
 
 def train(cfg, network):
+    os.environ['WANDB_API_KEY'] = 'b58edef69d0a41c5982684d9fd2a514529403b2c'
+    wandb.init(project='cellvoyant', name='CircleSnake', sync_tensorboard=True)
     trainer = make_trainer(cfg, network)
     optimizer = make_optimizer(cfg, network)
     scheduler = make_lr_scheduler(cfg, optimizer)

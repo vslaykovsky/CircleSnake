@@ -16,9 +16,10 @@ train:
 #    weight_decay: 0.0
 test:
     dataset: 'CocoVal'
+    num_workers: 0
     batch_size: 1
 
-heads: {'ct_hm': 1, 'radius': 1, 'reg': 2}
+heads: {'ct_hm': 4, 'radius': 1, 'reg': 2}
 segm_or_bbox: 'segm'
 ct_score: 0.05
 save_ep: 5
